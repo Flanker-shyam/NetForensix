@@ -5,7 +5,8 @@ This Project is still under develpment and an UI needs to be build!!
 Feel free to contribute.
 
 Project Flow Chart:
-![flowChart](https://github.com/Flanker-shyam/Network_Intrusion_detection_system/assets/85950516/9bab27f5-dc5e-47aa-8628-51e8fcf3bb61)
+![chart drawio](https://github.com/Flanker-shyam/Network-Intrusion-detection-system/assets/85950516/d170900c-10d4-4fbb-8891-f8d8aca6fb06)
+
 
 How to use setup:
 1. Create a fork of this repo and clone into your local environment
