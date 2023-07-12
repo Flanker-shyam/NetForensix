@@ -5,7 +5,8 @@ This Project is still under develpment and an UI needs to be build!!
 Feel free to contribute.
 
 Project Flow Chart:
-![chart drawio](https://github.com/Flanker-shyam/Network-Intrusion-detection-system/assets/85950516/d170900c-10d4-4fbb-8891-f8d8aca6fb06)
+![diagram drawio](https://github.com/Flanker-shyam/Network-Intrusion-detection-system/assets/85950516/842c3670-cf43-4aa1-9701-868639c75504)
+
 
 **What this tool is about**
 1. You can generate a csv file that will contain various flow based features extracted from the entered file.
