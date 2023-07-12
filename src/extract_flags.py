@@ -1,9 +1,9 @@
-
-
+"""This file extracts information regarding the flags in the packets
 # ACK Flag Count
 # Bwd URG Flags
 # PSH Flag Count
 # URG Flag Count
+"""
 
 #extract all flags from the packets; 
 

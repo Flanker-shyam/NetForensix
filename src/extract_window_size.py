@@ -1,4 +1,8 @@
 
+"""This file contains functions to extract following given features from the flow
+Init_Win_bytes_forward(Intial window bytes size in forward direction)
+act_data_pkt_fwd (actual data packets in forward direction)
+"""
 def init_window_size(flow_with_direction, packet_df):
     row = 0
     for key in flow_with_direction:

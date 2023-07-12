@@ -1,4 +1,15 @@
 
+"""This file contains functions that extract various information regarding 
+the size of the packets and segment lengths from the flow 
+
+Bwd Packet Length Max
+Bwd Packet Length Mean
+Bwd Packet Length std
+Total Backward Packets
+Avg Fwd Segment Size
+"""
+
+
 def packet_length(flow_with_direction, packet_df):
     row = 0
     for key in flow_with_direction:  #extract a key from the dictionary

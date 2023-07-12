@@ -1,5 +1,7 @@
 import pandas as pd
 
+"""This function extracts flow info from the pcap file and seperate them for futher processing"""
+
 def extract_flow_info(pcap):
     flow_dictionary = dict()
     columns = ['key','TimeStamp', 'srcIp', 'dstIp','srcPort', 'dstPort']
