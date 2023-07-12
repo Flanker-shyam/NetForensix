@@ -1,5 +1,7 @@
 import pandas as pd
+import argparse
 import pyshark
+import os
 from extractFlow import extract_flow_info
 from FlowDirection import flow_direction
 from extractTimeStamps import Time_main
@@ -9,7 +11,7 @@ from extract_flags import extractFlags
 from predict_model import predict_output
 
 
-def main():
+def flow_file(pcap_file, flag):
     #define columns in the dataframe
     columns = [' Bwd IAT Max', ' Bwd URG Flags', ' Total Backward Packets',
        ' Fwd IAT Max', ' Active Max', ' URG Flag Count',
@@ -22,7 +24,7 @@ def main():
     try:
         packet_df = pd.DataFrame(columns=columns)
 
-        pcap = pyshark.FileCapture('pcap_files/example.pcap')
+        pcap = pyshark.FileCapture(pcap_file)
         flow_dictionary, features_df = extract_flow_info(pcap)
         flow_with_direction = flow_direction(flow_dictionary)
         Time_main(flow_with_direction, packet_df)
@@ -34,21 +36,66 @@ def main():
 
         #drop extra columns from the dataframe !!
         packet_df.drop(['dummy',18],axis = 1,inplace=True)
-        # print(packet_df)
 
-        predict_output(packet_df, features_df)
+        if flag == "flow":
+            print("Output generated Successfully\n", packet_df.describe())
 
-        mapping_dict = {0:"BENIGN",4:"DoS Hulk",2:"DDoS", 10:"PortScan",3:"DoS GoldenEye",5:"DoS Slowhttptest",
-                        6:"DoS slowloris", 7:"FTP-Patator",11:"SSH-Patator",1:"Bot",12:"Web Attack � Brute Force",
-                        8:"Heartbleed ", 9:"Infiltration",13:"Web Attack � Sql Injection",14:"Web Attack � XSS"}     
+            flow_csv_path = 'flow.csv'
 
-        features_df['result'] = features_df['result'].replace(mapping_dict)   
-                          
-        """----------------------saving to csv file------------------------"""
-        features_df.to_csv("ansDF.csv",index=False)
+            packet_df.to_csv(flow_csv_path, index=False)
+            print(f"Flow CSV file generated: {flow_csv_path}")
+
     except Exception as e:
         print("An error occured: ", e.args[0])
     
+    return packet_df,features_df
+
+def result_file(packet_df, features_df):
+    # print(packet_df)
+        try:
+            predict_output(packet_df, features_df)
+
+            mapping_dict = {0:"BENIGN",4:"DoS Hulk",2:"DDoS", 10:"PortScan",3:"DoS GoldenEye",5:"DoS Slowhttptest",
+                            6:"DoS slowloris", 7:"FTP-Patator",11:"SSH-Patator",1:"Bot",12:"Web Attack � Brute Force",
+                            8:"Heartbleed ", 9:"Infiltration",13:"Web Attack � Sql Injection",14:"Web Attack � XSS"}     
+
+            features_df['result'] = features_df['result'].replace(mapping_dict)   
+                            
+            """----------------------saving to csv file------------------------"""
+
+            print("Output generated Successfully\n",features_df['result'].value_counts())
+
+            flow_csv_path = 'result.csv'
+
+            features_df.to_csv(flow_csv_path, index=False)
+            print(f"Result CSV file generated: {flow_csv_path}")
+        
+        except Exception as e:
+            print("An error occured: ", e.args[0])
+
+def main():
+
+    parser = argparse.ArgumentParser(description="Network Intrusion Tool/flanker-toolX")
+    parser.add_argument('-f', '--flow', action='store_true', help="Generate flow.csv file")
+    parser.add_argument('-r', '--result', action='store_true', help="Get result")
+    parser.add_argument('--pcap', type=str, help="Path to the uploaded pcap/pcapng file")
+
+    args = parser.parse_args()
+
+    if args.flow and args.pcap:
+        if os.path.isfile(args.pcap) and args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng'):
+            pkt_df, ft_df = flow_file(args.pcap, "flow")
+        else:
+            print("Invalid pcap file. Please provide a valid path to a .pcap file.")
+    elif args.result and args.pcap:
+        if os.path.isfile(args.pcap) and args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng'):
+            pkt_df, ft_df = flow_file(args.pcap,"res")
+            result_file(pkt_df, ft_df)
+        else:
+            print("Invalid pcap file. Please provide a valid path to a .pcap/.pcapng file.")
+    else:
+        print("Invalid option. Please choose either --flow or --result, and provide a valid --pcap file path.\nuse --help for more information")
+
     return
 
 """---------------------------------------------------------------------------------------------"""

@@ -1,3 +1,13 @@
+"""Extract the information regarding the time features from the flow
+
+FWD IAT max
+BWD IAT max
+Idle Mean time
+Active Max
+Active Mean
+Flow Bytes/s
+Fwd Avg Bulk Rate
+"""
 
 def custom_sort(packet): #a custome function to sort the packets w.r.t to their timestamp
     if 'tcp' in packet:

@@ -1,3 +1,4 @@
+"""This function divide packets into forward and backward direction to understand flow pattern"""
 
 def flow_direction(flow_dict):
     flow_with_direction = dict()
