@@ -1,6 +1,5 @@
 # Network_Intrusion_detection_system
 A smart Network Intrusion detection tool to perform forensics on your network to discover various network attacks like Brute Force FTP, Brute Force SSH, DoS, Web Attack, Botnet, DDoS, etc, by analysing the flow behaviour of the network. This project is using CICIDS2017 dataset form kaggle.
-This Project is still under develpment and an UI needs to be build!!
 
 Feel free to contribute.
 
