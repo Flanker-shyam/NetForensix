@@ -7,22 +7,37 @@ Feel free to contribute.
 Project Flow Chart:
 ![chart drawio](https://github.com/Flanker-shyam/Network-Intrusion-detection-system/assets/85950516/d170900c-10d4-4fbb-8891-f8d8aca6fb06)
 
+**What this tool is about**
+1. You can generate a csv file that will contain various flow based features extracted from the entered file.
+2. You can perform the forensic on the file to find the Intrusions and get the file in output.
 
-How to use setup:
+**How to setup:**
 1. Create a fork of this repo and clone into your local environment
 2. Create a new branch
 3. Install all dependencies by following command:
 ```bash
 pip install -r requirements.txt
-
 ```
-4. Open deploy_model.ipynb file in ML_model folder and run each cell one by one. This will do a minor preprocessing
-   train, test your model and save it into a file using joblib that we will use later.
+4. Open deploy_model.ipynb file in ML_model folder and run each cell one by one. This will do a minor preprocessing,
+    train, test your model and save it into a file using joblib that it will use later.
 5. All done !!
-6. Now simply run main.py by following command
- ```bash
- python src/main.py
- ```
-7. You can also add your own test pcap file in main.py
-8. Your output will be saved in a file named ansDF.csv (for now you can visualize your output by opening this file)
-   (UI under development)---- Will finish it soon !!
+
+**How to use**
+```bash
+python src/main.py <options> <file>
+```
+1. After above given setup you can interact with the tool
+2. Use follwing command to see all the options and how to use:
+```bash
+python src/main.py --help
+```
+3. To generate flow file use the follwing command:
+```bash
+python src/main.py -f --pcap <file_path>
+```
+4. To generate result of detected intrusions use the following command:
+```bash
+python src/main.py -r --pcap <file_path>
+```
+
+You will see the result on your cli and a file will be generated based on the chosen option.
