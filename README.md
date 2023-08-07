@@ -10,13 +10,14 @@ For a visual representation of NetForensix's architecture and operation, please 
 ![diagram drawio](https://github.com/Flanker-shyam/Network-Intrusion-detection-system/assets/85950516/842c3670-cf43-4aa1-9701-868639c75504)
 
 <ul><li><h3>Features:</h3></li></ul>
-Advanced Intrusion Detection: Utilize machine learning techniques to uncover and report a wide range of network attacks.
-Flow-based Analysis: NetForensix focuses on analyzing the flow behavior of network traffic, providing a deeper understanding of potential threats.
-Effortless Setup: Follow the simple setup steps outlined in the How to Setup section to get NetForensix up and running quickly.
-Automated Reporting: Generate detailed CSV files containing flow-based features extracted from input data files.
-Forensic Analysis: Conduct forensic analysis on input files to identify and categorize network intrusions, and retrieve the output files.
-User-friendly CLI: Interact with NetForensix using a command-line interface, making it accessible to both beginners and experts.
-
+<ol>
+<li>Advanced Intrusion Detection: Utilize machine learning techniques to uncover and report a wide range of network attacks.</li>
+<li>Flow-based Analysis: NetForensix focuses on analyzing the flow behavior of network traffic, providing a deeper understanding of potential threats.</li>
+<li>Effortless Setup: Follow the simple setup steps outlined in the How to Setup section to get NetForensix up and running quickly.</li>
+<li>Automated Reporting: Generate detailed CSV files containing flow-based features extracted from input data files.</li>
+<li>Forensic Analysis: Conduct forensic analysis on input files to identify and categorize network intrusions, and retrieve the output files.</li>
+<li>User-friendly CLI: Interact with NetForensix using a command-line interface, making it accessible to both beginners and experts.</li>
+</ol>
 <ul><li><h3>How to setup:</h3></li></ul>
 
 1. Create a fork of this repo and clone into your local environment
@@ -76,5 +77,5 @@ NetForensix appreciates the following resources:
 <li>Scikit-Learn</li>
 </ul>
 
-<em>Protect your network with NetForensix: Your Smart Network Intrusion Detection Tool. 🛡️🌐</em>
+<em>Protect your network with NetForensix: Your Smart Network Intrusion Detection Tool. </em>🛡️🌐
 
