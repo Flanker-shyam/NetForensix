@@ -32,7 +32,7 @@ def extract_flow_info(pcap):
 
         flow_dictionary.setdefault(key_string, []).append(pkt)
         if not key_string in features_df['key'].values:
-            features_df = features_df._append({'key':key_string,'TimeStamp':f'{timestamp}','srcIp': f'{srcIp}', 'dstIp':f'{dstIp}', 'srcPort':f'{srcPort}', 'dstport':f'{dstPort}'},ignore_index = True)
+            features_df = features_df._append({'key':key_string,'TimeStamp':f'{timestamp}','srcIp': f'{srcIp}', 'dstIp':f'{dstIp}', 'srcPort':f'{srcPort}', 'dstPort':f'{dstPort}'},ignore_index = True)
 
     return flow_dictionary, features_df
 

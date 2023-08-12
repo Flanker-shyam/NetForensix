@@ -2,6 +2,8 @@ import pandas as pd
 import argparse
 import pyshark
 import os
+from tqdm import tqdm
+from alive_progress import alive_bar
 from extractFlow import extract_flow_info
 from FlowDirection import flow_direction
 from extractTimeStamps import Time_main
@@ -10,6 +12,11 @@ from extract_window_size import init_window_size, actual_pkt_fwd
 from extract_flags import extractFlags
 from predict_model import predict_output
 
+def run_function_with_progress(function, function_name, *args):
+    with alive_bar(1, title=function_name, bar='blocks') as bar:
+        result = function(*args)
+        bar()
+    return result
 
 def flow_file(pcap_file, flag):
     #define columns in the dataframe
@@ -74,7 +81,6 @@ def result_file(packet_df, features_df):
             print("An error occured: ", e.args[0])
 
 def main():
-
     parser = argparse.ArgumentParser(description="Network Intrusion Tool/flanker-toolX")
     parser.add_argument('-f', '--flow', action='store_true', help="Generate flow.csv file")
     parser.add_argument('-r', '--result', action='store_true', help="Get result")
@@ -83,25 +89,18 @@ def main():
     args = parser.parse_args()
 
     if args.flow and args.pcap:
-        if os.path.isfile(args.pcap) and args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng'):
-            pkt_df, ft_df = flow_file(args.pcap, "flow")
+        if os.path.isfile(args.pcap) and (args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng')):
+            pkt_df, ft_df = run_function_with_progress(flow_file, "flow_file", args.pcap, "flow")
         else:
             print("Invalid pcap file. Please provide a valid path to a .pcap file.")
     elif args.result and args.pcap:
-        if os.path.isfile(args.pcap) and args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng'):
-            pkt_df, ft_df = flow_file(args.pcap,"res")
-            result_file(pkt_df, ft_df)
+        if os.path.isfile(args.pcap) and (args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng')):
+            pkt_df, ft_df = run_function_with_progress(flow_file, "flow_file", args.pcap, "res")
+            run_function_with_progress(result_file, "result_file", pkt_df, ft_df)
         else:
             print("Invalid pcap file. Please provide a valid path to a .pcap/.pcapng file.")
     else:
-        print("Invalid option. Please choose either --flow or --result, and provide a valid --pcap file path.\nuse --help for more information")
-
-    return
-
-"""---------------------------------------------------------------------------------------------"""
-#code entry point 
+        print("Invalid option. Please choose either --flow(-f) or --result(-r), and provide a valid --pcap file path.\nuse --help for more information")
 
 if __name__ == "__main__":
     main()
-
-
