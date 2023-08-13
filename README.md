@@ -1,3 +1,5 @@
+## Note: Constructing the internal working of this tool is still under process and a lot needs to be done !! feel free to contribute and discuss. 
+
 <h1>NetForensix: Smart Network Intrusion Detection Tool</h1>
 
 <b>NetForensix</b> is a powerful and intelligent network intrusion detection tool designed to bolster your network's security by identifying various network attacks. By analyzing network flow behavior, this tool can detect and provide insights into attacks such as Brute Force FTP, Brute Force SSH, DoS, Web Attacks, Botnets, DDoS, and more. Leveraging the CICIDS2017 dataset from Kaggle, NetForensix offers a robust solution for network forensics and intrusion detection.
