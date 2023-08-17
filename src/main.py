@@ -102,9 +102,9 @@ def main():
     parser.add_argument('--pcap', type=str, help="Path to the uploaded pcap/pcapng file")
 
     args = parser.parse_args()
+    print_welcome_message()
 
     if args.flow and args.pcap:
-        print_welcome_message()
         if os.path.isfile(args.pcap) and (args.pcap.endswith('.pcap') or args.pcap.endswith('.pcapng')):
             pkt_df, ft_df = run_function_with_progress(flow_file, "flow_file", args.pcap, "flow")
         else:
