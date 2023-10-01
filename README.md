@@ -35,20 +35,20 @@ pip install -r requirements.txt
 <ul><li><h3>How to use:</h3></li></ul>
 
 ```bash
-python src/main.py <options> <file>
+python3 src/main.py <options> <file>
 ```
 1. After above given setup you can interact with the tool
 2. Use follwing command to see all the options and how to use:
 ```bash
-python src/main.py --help
+python3 src/main.py --help
 ```
 3. To generate flow file use the follwing command:
 ```bash
-python src/main.py -f --pcap <file_path>
+python3 src/main.py -f --pcap <file_path>
 ```
 4. To generate result of detected intrusions use the following command:
 ```bash
-python src/main.py -r --pcap <file_path>
+python3 src/main.py -r --pcap <file_path>
 ```
 
 You will see the result on your cli and a file will be generated based on the chosen option.
