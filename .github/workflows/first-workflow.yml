@@ -2,7 +2,7 @@ name: first workflow
 on: [push]
 jobs:
   check-python-version:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: use latest commit
         uses: actions/checkout@v3
@@ -10,7 +10,7 @@ jobs:
       - name: use particular python version
         uses: actions/setup-python@v3
         with: 
-          python-version: 3.13.0
+          python-version: 3.6
 
       - name: Check version
         run: python --version
