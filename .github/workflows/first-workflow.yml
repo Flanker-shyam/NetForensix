@@ -1,14 +1,19 @@
 name: first workflow
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
-  check-python-version
+  check-python-version:
     runs-on: ubuntu-latest
     steps:
       - name: use latest commit
         uses: actions/checkout@v2
+
       - name: use particular python version
         uses: actions/setup-python@v2
         with: 
-          python: 3.6.9
+          python-version: 3.6.9
+
       - name: Check version
         run: python --version
