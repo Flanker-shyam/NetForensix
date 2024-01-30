@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: use latest commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: use particular python version
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with: 
-          python-version: 3.6.9
+          python-version: 3.13.0
 
       - name: Check version
         run: python --version
