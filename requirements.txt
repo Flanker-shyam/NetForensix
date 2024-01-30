@@ -189,7 +189,6 @@ uci-dataset==0.0.7
 uri-template==1.2.0
 uritemplate==4.1.1
 validators==0.20.0
-vboxapi==1.0
 watchdog==3.0.0
 wcwidth==0.2.6
 webcolors==1.12
