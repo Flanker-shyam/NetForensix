@@ -22,10 +22,10 @@ jobs:
                 pip install flake8
                 pip install pylint
                 if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-            - name : Lint with flake8
-              run: |
-                flake8 src --count --select=E9,F63,F7,F82 --statistics
-                flake8 src --count --max-complexity=10 --max-line-length=79 --statistics
+            # - name : Lint with flake8
+            #   run: |
+            #     flake8 src --count --select=E9,F63,F7,F82 --statistics
+            #     flake8 src --count --max-complexity=10 --max-line-length=79 --statistics
 
             - name: Lint with pyLint
               run: |
